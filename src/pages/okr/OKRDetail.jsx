@@ -100,13 +100,21 @@ export default function OKRDetail() {
         <div className="mt-3 space-y-2">
           <div>
             <label className={`text-xs font-medium ${darkMode ? 'text-neutral-500' : 'text-neutral-400'}`}>Período</label>
-            <input
-              type="text"
+            <select
               value={okr.period || ''}
               onChange={e => update({ period: e.target.value })}
               className={`w-full mt-1 p-2.5 rounded-xl text-sm ${darkMode ? 'bg-neutral-800 text-white' : 'bg-neutral-100 text-neutral-900'}`}
-              placeholder="Ej: 1er Cuatrimestre 2026"
-            />
+            >
+              <option value="">Seleccionar período</option>
+              <option value="1er Cuatrimestre 2026">1er Cuatrimestre 2026</option>
+              <option value="2do Cuatrimestre 2026">2do Cuatrimestre 2026</option>
+              <option value="3er Cuatrimestre 2026">3er Cuatrimestre 2026</option>
+              <option value="Q1 2026">Q1 2026</option>
+              <option value="Q2 2026">Q2 2026</option>
+              <option value="Q3 2026">Q3 2026</option>
+              <option value="Q4 2026">Q4 2026</option>
+              <option value="Anual 2026">Anual 2026</option>
+            </select>
           </div>
           <div>
             <label className={`text-xs font-medium ${darkMode ? 'text-neutral-500' : 'text-neutral-400'}`}>Descripción</label>
