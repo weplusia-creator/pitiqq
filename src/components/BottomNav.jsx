@@ -1,13 +1,14 @@
 import { useLocation, useNavigate } from 'react-router-dom'
-import { Wallet, Lightbulb, Calendar, Settings } from 'lucide-react'
+import { Wallet, Lightbulb, Target, Heart, Settings } from 'lucide-react'
 import { useContext } from 'react'
 import { AppContext } from '../App'
 import { haptic } from '../utils/helpers'
 
 const tabs = [
   { path: '/', icon: Wallet, label: 'Finanzas', match: ['/', '/movements', '/goals', '/budget'] },
-  { path: '/ideas', icon: Lightbulb, label: 'Ideas', match: ['/ideas', '/kanban', '/trends', '/stats', '/hashtags'] },
-  { path: '/calendar', icon: Calendar, label: 'Calendario', match: ['/calendar'] },
+  { path: '/ideas', icon: Lightbulb, label: 'Ideas', match: ['/ideas', '/kanban', '/trends', '/stats', '/hashtags', '/calendar'] },
+  { path: '/okr', icon: Target, label: 'OKR', match: ['/okr'] },
+  { path: '/wedding', icon: Heart, label: 'Boda', match: ['/wedding'] },
   { path: '/settings', icon: Settings, label: 'Config', match: ['/settings'] },
 ]
 
@@ -33,7 +34,7 @@ export default function BottomNav() {
                 active ? 'text-pink-brand' : darkMode ? 'text-neutral-500' : 'text-neutral-400'
               }`}
             >
-              <tab.icon size={22} strokeWidth={active ? 2.5 : 1.5} />
+              <tab.icon size={20} strokeWidth={active ? 2.5 : 1.5} />
               <span className="text-[10px] font-medium">{tab.label}</span>
             </button>
           )

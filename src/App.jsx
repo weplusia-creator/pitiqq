@@ -13,6 +13,9 @@ import ContentCalendar from './pages/tiktok/ContentCalendar'
 import Trends from './pages/tiktok/Trends'
 import VideoStats from './pages/tiktok/VideoStats'
 import Hashtags from './pages/tiktok/Hashtags'
+import OKRList from './pages/okr/OKRList'
+import OKRDetail from './pages/okr/OKRDetail'
+import Wedding from './pages/wedding/Wedding'
 import Settings from './pages/Settings'
 
 export const AppContext = createContext()
@@ -25,6 +28,9 @@ function App() {
   const [trends, setTrends] = useLocalStorage('pitiqq_trends', [])
   const [videoStats, setVideoStats] = useLocalStorage('pitiqq_video_stats', [])
   const [hashtags, setHashtags] = useLocalStorage('pitiqq_hashtags', [])
+  const [okrs, setOkrs] = useLocalStorage('pitiqq_okrs', [])
+  const [weddingTasks, setWeddingTasks] = useLocalStorage('pitiqq_wedding_tasks', [])
+  const [weddingGuests, setWeddingGuests] = useLocalStorage('pitiqq_wedding_guests', [])
   const [darkMode, setDarkMode] = useLocalStorage('pitiqq_dark_mode', true)
 
   const ctx = {
@@ -35,6 +41,9 @@ function App() {
     trends, setTrends,
     videoStats, setVideoStats,
     hashtags, setHashtags,
+    okrs, setOkrs,
+    weddingTasks, setWeddingTasks,
+    weddingGuests, setWeddingGuests,
     darkMode, setDarkMode,
   }
 
@@ -55,6 +64,9 @@ function App() {
               <Route path="/trends" element={<Trends />} />
               <Route path="/stats" element={<VideoStats />} />
               <Route path="/hashtags" element={<Hashtags />} />
+              <Route path="/okr" element={<OKRList />} />
+              <Route path="/okr/:id" element={<OKRDetail />} />
+              <Route path="/wedding" element={<Wedding />} />
               <Route path="/settings" element={<Settings />} />
             </Route>
             <Route path="*" element={<Navigate to="/" replace />} />

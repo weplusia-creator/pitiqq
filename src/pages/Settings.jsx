@@ -32,6 +32,9 @@ export default function Settings() {
       trends: ctx.trends,
       videoStats: ctx.videoStats,
       hashtags: ctx.hashtags,
+      okrs: ctx.okrs,
+      weddingTasks: ctx.weddingTasks,
+      weddingGuests: ctx.weddingGuests,
       exportDate: new Date().toISOString(),
     }
     const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' })
@@ -61,6 +64,9 @@ export default function Settings() {
           if (data.trends) ctx.setTrends(data.trends)
           if (data.videoStats) ctx.setVideoStats(data.videoStats)
           if (data.hashtags) ctx.setHashtags(data.hashtags)
+          if (data.okrs) ctx.setOkrs(data.okrs)
+          if (data.weddingTasks) ctx.setWeddingTasks(data.weddingTasks)
+          if (data.weddingGuests) ctx.setWeddingGuests(data.weddingGuests)
           haptic('success')
           alert('Datos importados correctamente')
         } catch {
@@ -82,6 +88,9 @@ export default function Settings() {
       trends: ctx.trends,
       videoStats: ctx.videoStats,
       hashtags: ctx.hashtags,
+      okrs: ctx.okrs,
+      weddingTasks: ctx.weddingTasks,
+      weddingGuests: ctx.weddingGuests,
       exportDate: new Date().toISOString(),
     }
     const blob = new Blob([JSON.stringify(data)], { type: 'application/json' })
@@ -105,6 +114,9 @@ export default function Settings() {
     ctx.setTrends([])
     ctx.setVideoStats([])
     ctx.setHashtags([])
+    ctx.setOkrs([])
+    ctx.setWeddingTasks([])
+    ctx.setWeddingGuests([])
     setShowConfirmClear(false)
   }
 
