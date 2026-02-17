@@ -97,20 +97,28 @@ export default function OKRDetail() {
           className={`w-full text-lg font-bold bg-transparent outline-none ${darkMode ? 'text-white' : 'text-neutral-900'}`}
           placeholder="Título del objetivo"
         />
-        <input
-          type="text"
-          value={okr.period || ''}
-          onChange={e => update({ period: e.target.value })}
-          className={`w-full text-sm mt-1 bg-transparent outline-none ${darkMode ? 'text-neutral-400' : 'text-neutral-500'}`}
-          placeholder="Período (ej: 1er Cuatrimestre 2026)"
-        />
-        <textarea
-          value={okr.description || ''}
-          onChange={e => update({ description: e.target.value })}
-          className={`w-full text-sm mt-1 bg-transparent outline-none resize-none ${darkMode ? 'text-neutral-300' : 'text-neutral-600'}`}
-          placeholder="Descripción..."
-          rows={2}
-        />
+        <div className="mt-3 space-y-2">
+          <div>
+            <label className={`text-xs font-medium ${darkMode ? 'text-neutral-500' : 'text-neutral-400'}`}>Período</label>
+            <input
+              type="text"
+              value={okr.period || ''}
+              onChange={e => update({ period: e.target.value })}
+              className={`w-full mt-1 p-2.5 rounded-xl text-sm ${darkMode ? 'bg-neutral-800 text-white' : 'bg-neutral-100 text-neutral-900'}`}
+              placeholder="Ej: 1er Cuatrimestre 2026"
+            />
+          </div>
+          <div>
+            <label className={`text-xs font-medium ${darkMode ? 'text-neutral-500' : 'text-neutral-400'}`}>Descripción</label>
+            <textarea
+              value={okr.description || ''}
+              onChange={e => update({ description: e.target.value })}
+              className={`w-full mt-1 p-2.5 rounded-xl text-sm resize-none ${darkMode ? 'bg-neutral-800 text-white' : 'bg-neutral-100 text-neutral-900'}`}
+              placeholder="Contexto del objetivo..."
+              rows={2}
+            />
+          </div>
+        </div>
 
         <div className="mt-3">
           <div className="flex justify-between text-sm mb-1">
