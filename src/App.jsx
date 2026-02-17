@@ -7,6 +7,8 @@ import Dashboard from './pages/finance/Dashboard'
 import Movements from './pages/finance/Movements'
 import SavingsGoals from './pages/finance/SavingsGoals'
 import Budget from './pages/finance/Budget'
+import Savings from './pages/finance/Savings'
+import Dollars from './pages/finance/Dollars'
 import IdeasBank from './pages/tiktok/IdeasBank'
 import IdeaDetail from './pages/tiktok/IdeaDetail'
 import Kanban from './pages/tiktok/Kanban'
@@ -34,6 +36,12 @@ function App() {
   const [goalsLucre, setGoalsLucre] = useLocalStorage('pitiqq_goals_lucre', [])
   const [budgetsLucre, setBudgetsLucre] = useLocalStorage('pitiqq_budgets_lucre', [])
 
+  // Per-user savings & dollars
+  const [savingsMateo, setSavingsMateo] = useLocalStorage('pitiqq_savings_mateo', 0)
+  const [savingsLucre, setSavingsLucre] = useLocalStorage('pitiqq_savings_lucre', 0)
+  const [dollarsMateo, setDollarsMateo] = useLocalStorage('pitiqq_dollars_mateo', { balance: 0, operations: [] })
+  const [dollarsLucre, setDollarsLucre] = useLocalStorage('pitiqq_dollars_lucre', { balance: 0, operations: [] })
+
   // Per-user tasks
   const [tasksMateo, setTasksMateo] = useLocalStorage('pitiqq_tasks_mateo', [])
   const [tasksLucre, setTasksLucre] = useLocalStorage('pitiqq_tasks_lucre', [])
@@ -58,12 +66,18 @@ function App() {
   const setBudgets = isMateo ? setBudgetsMateo : setBudgetsLucre
   const userTasks = isMateo ? tasksMateo : tasksLucre
   const setUserTasks = isMateo ? setTasksMateo : setTasksLucre
+  const savings = isMateo ? savingsMateo : savingsLucre
+  const setSavings = isMateo ? setSavingsMateo : setSavingsLucre
+  const dollars = isMateo ? dollarsMateo : dollarsLucre
+  const setDollars = isMateo ? setDollarsMateo : setDollarsLucre
 
   const ctx = {
     currentUser, setCurrentUser,
     movements, setMovements,
     goals, setGoals,
     budgets, setBudgets,
+    savings, setSavings,
+    dollars, setDollars,
     userTasks, setUserTasks,
     ideas, setIdeas,
     trends, setTrends,
@@ -94,6 +108,8 @@ function App() {
               <Route path="/movements" element={<Movements />} />
               <Route path="/goals" element={<SavingsGoals />} />
               <Route path="/budget" element={<Budget />} />
+              <Route path="/savings" element={<Savings />} />
+              <Route path="/dollars" element={<Dollars />} />
               <Route path="/tasks" element={<Tasks />} />
               <Route path="/ideas" element={<IdeasBank />} />
               <Route path="/ideas/:id" element={<IdeaDetail />} />

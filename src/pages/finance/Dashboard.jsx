@@ -1,7 +1,7 @@
 import { useContext, useMemo } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts'
-import { TrendingUp, TrendingDown, PiggyBank, ArrowRight, Plus, Target, Wallet } from 'lucide-react'
+import { TrendingUp, TrendingDown, PiggyBank, ArrowRight, Plus, Target, Wallet, DollarSign } from 'lucide-react'
 import { AppContext } from '../../App'
 import { formatMoney, getCurrentMonth, getMonthName, EXPENSE_CATEGORIES } from '../../utils/helpers'
 
@@ -86,6 +86,8 @@ export default function Dashboard() {
           { icon: Wallet, label: 'Movimientos', path: '/movements' },
           { icon: Target, label: 'Metas', path: '/goals' },
           { icon: PiggyBank, label: 'Presupuesto', path: '/budget' },
+          { icon: PiggyBank, label: 'Ahorros', path: '/savings' },
+          { icon: DollarSign, label: 'Dólares', path: '/dollars' },
         ].map(item => (
           <button
             key={item.path}
