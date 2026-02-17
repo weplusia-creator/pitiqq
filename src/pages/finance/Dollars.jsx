@@ -1,5 +1,5 @@
 import { useContext, useState, useMemo } from 'react'
-import { Plus, DollarSign, TrendingUp, TrendingDown, Trash2, RefreshCw } from 'lucide-react'
+import { Plus, DollarSign, TrendingUp, TrendingDown, Trash2, RefreshCw, X } from 'lucide-react'
 import { AppContext } from '../../App'
 import Modal from '../../components/Modal'
 import SwipeToDelete from '../../components/SwipeToDelete'
@@ -154,6 +154,9 @@ export default function Dollars() {
                   <span className={`font-semibold text-sm ${op.type === 'compra' ? 'text-red-400' : 'text-emerald-400'}`}>
                     {op.type === 'compra' ? '-' : '+'}{formatARS(op.total)}
                   </span>
+                  <button onClick={() => handleDelete(op.id)} className="p-1.5 text-neutral-500 active:text-red-400">
+                    <Trash2 size={15} />
+                  </button>
                 </div>
               </SwipeToDelete>
             ))}
