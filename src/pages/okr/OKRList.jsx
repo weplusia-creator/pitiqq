@@ -127,13 +127,30 @@ export default function OKRList() {
             />
           </div>
           <div>
-            <label className={`text-sm ${darkMode ? 'text-neutral-400' : 'text-neutral-500'}`}>Período (opcional)</label>
+            <label className={`text-sm ${darkMode ? 'text-neutral-400' : 'text-neutral-500'}`}>Período</label>
+            <div className="flex flex-wrap gap-2 mt-1">
+              {[
+                '1er Cuatrimestre 2026', '2do Cuatrimestre 2026', '3er Cuatrimestre 2026',
+                'Q1 2026', 'Q2 2026', 'Q3 2026', 'Q4 2026',
+                'Anual 2026',
+              ].map(p => (
+                <button
+                  key={p}
+                  onClick={() => setForm(f => ({ ...f, period: p }))}
+                  className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
+                    form.period === p ? 'bg-pink-brand text-white' : darkMode ? 'bg-neutral-800 text-neutral-400' : 'bg-neutral-100 text-neutral-600'
+                  }`}
+                >
+                  {p}
+                </button>
+              ))}
+            </div>
             <input
               type="text"
               value={form.period}
               onChange={e => setForm(f => ({ ...f, period: e.target.value }))}
-              placeholder="Ej: Q1 2026, Febrero 2026"
-              className={`w-full mt-1 p-3 rounded-xl ${darkMode ? 'bg-neutral-800 text-white' : 'bg-neutral-100 text-neutral-900'}`}
+              placeholder="O escribí uno personalizado..."
+              className={`w-full mt-2 p-3 rounded-xl text-sm ${darkMode ? 'bg-neutral-800 text-white' : 'bg-neutral-100 text-neutral-900'}`}
             />
           </div>
           <div>
