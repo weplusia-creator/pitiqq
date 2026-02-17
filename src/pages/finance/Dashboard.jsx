@@ -6,7 +6,7 @@ import { AppContext } from '../../App'
 import { formatMoney, getCurrentMonth, getMonthName, EXPENSE_CATEGORIES } from '../../utils/helpers'
 
 export default function Dashboard() {
-  const { movements, darkMode } = useContext(AppContext)
+  const { movements, darkMode, currentUser } = useContext(AppContext)
   const navigate = useNavigate()
   const currentMonth = getCurrentMonth()
 
@@ -49,7 +49,7 @@ export default function Dashboard() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold">Pitiqq</h1>
+          <h1 className="text-2xl font-bold">Hola, {currentUser === 'mateo' ? 'Mateo' : 'Lucre'}</h1>
           <p className={`text-sm ${darkMode ? 'text-neutral-400' : 'text-neutral-500'}`}>
             {getMonthName(currentMonth)}
           </p>

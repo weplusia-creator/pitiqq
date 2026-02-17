@@ -1,5 +1,5 @@
 import { useContext, useState, useEffect } from 'react'
-import { Moon, Sun, Download, Upload, Share2, Smartphone, Trash2 } from 'lucide-react'
+import { Moon, Sun, Download, Upload, Share2, Smartphone, Trash2, UserCircle } from 'lucide-react'
 import { AppContext } from '../App'
 import { haptic } from '../utils/helpers'
 
@@ -125,6 +125,27 @@ export default function Settings() {
   return (
     <div className="px-4 py-4 space-y-4">
       <h1 className="text-xl font-bold">Configuración</h1>
+
+      {/* Current user */}
+      <div className={card}>
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <UserCircle size={20} className="text-pink-brand" />
+            <div>
+              <p className="font-semibold text-sm">Usuario actual</p>
+              <p className={`text-xs ${darkMode ? 'text-neutral-400' : 'text-neutral-500'}`}>
+                {ctx.currentUser === 'mateo' ? 'Mateo' : 'Lucre'}
+              </p>
+            </div>
+          </div>
+          <button
+            onClick={() => { haptic(); ctx.setCurrentUser(null) }}
+            className="px-4 py-2 bg-pink-brand text-white rounded-xl text-sm font-medium active:scale-95 transition-transform"
+          >
+            Cambiar
+          </button>
+        </div>
+      </div>
 
       {/* Install PWA */}
       {installPrompt && (

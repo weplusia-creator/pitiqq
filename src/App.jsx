@@ -2,6 +2,7 @@ import { Routes, Route, Navigate } from 'react-router-dom'
 import { useState, createContext } from 'react'
 import { useLocalStorage } from './hooks/useLocalStorage'
 import Layout from './components/Layout'
+import UserSelect from './pages/UserSelect'
 import Dashboard from './pages/finance/Dashboard'
 import Movements from './pages/finance/Movements'
 import SavingsGoals from './pages/finance/SavingsGoals'
@@ -21,9 +22,18 @@ import Settings from './pages/Settings'
 export const AppContext = createContext()
 
 function App() {
-  const [movements, setMovements] = useLocalStorage('pitiqq_movements', [])
-  const [goals, setGoals] = useLocalStorage('pitiqq_goals', [])
-  const [budgets, setBudgets] = useLocalStorage('pitiqq_budgets', [])
+  const [currentUser, setCurrentUser] = useLocalStorage('pitiqq_current_user', null)
+
+  // Finance data is per-user (keyed by user name)
+  const [movementsMateo, setMovementsMateo] = useLocalStorage('pitiqq_movements_mateo', [])
+  const [goalsMateo, setGoalsMateo] = useLocalStorage('pitiqq_goals_mateo', [])
+  const [budgetsMateo, setBudgetsMateo] = useLocalStorage('pitiqq_budgets_mateo', [])
+
+  const [movementsLucre, setMovementsLucre] = useLocalStorage('pitiqq_movements_lucre', [])
+  const [goalsLucre, setGoalsLucre] = useLocalStorage('pitiqq_goals_lucre', [])
+  const [budgetsLucre, setBudgetsLucre] = useLocalStorage('pitiqq_budgets_lucre', [])
+
+  // Shared data
   const [ideas, setIdeas] = useLocalStorage('pitiqq_ideas', [])
   const [trends, setTrends] = useLocalStorage('pitiqq_trends', [])
   const [videoStats, setVideoStats] = useLocalStorage('pitiqq_video_stats', [])
@@ -33,7 +43,17 @@ function App() {
   const [weddingGuests, setWeddingGuests] = useLocalStorage('pitiqq_wedding_guests', [])
   const [darkMode, setDarkMode] = useLocalStorage('pitiqq_dark_mode', true)
 
+  // Select the right finance data based on current user
+  const isMateo = currentUser === 'mateo'
+  const movements = isMateo ? movementsMateo : movementsLucre
+  const setMovements = isMateo ? setMovementsMateo : setMovementsLucre
+  const goals = isMateo ? goalsMateo : goalsLucre
+  const setGoals = isMateo ? setGoalsMateo : setGoalsLucre
+  const budgets = isMateo ? budgetsMateo : budgetsLucre
+  const setBudgets = isMateo ? setBudgetsMateo : setBudgetsLucre
+
   const ctx = {
+    currentUser, setCurrentUser,
     movements, setMovements,
     goals, setGoals,
     budgets, setBudgets,
@@ -45,6 +65,15 @@ function App() {
     weddingTasks, setWeddingTasks,
     weddingGuests, setWeddingGuests,
     darkMode, setDarkMode,
+  }
+
+  // Show user selection if no user is selected
+  if (!currentUser) {
+    return (
+      <AppContext.Provider value={ctx}>
+        <UserSelect />
+      </AppContext.Provider>
+    )
   }
 
   return (
