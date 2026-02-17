@@ -9,7 +9,7 @@ const tabs = [
   { path: '/tasks', icon: CheckSquare, label: 'Tareas', match: ['/tasks'] },
   { path: '/ideas', icon: Lightbulb, label: 'Ideas', match: ['/ideas', '/kanban', '/trends', '/stats', '/hashtags', '/calendar'] },
   { path: '/okr', icon: Target, label: 'OKR', match: ['/okr'] },
-  { path: '/wedding', icon: Heart, label: 'Boda', match: ['/wedding'] },
+  { path: '/wedding', icon: Heart, label: 'Casorio', match: ['/wedding'] },
   { path: '/settings', icon: Settings, label: 'Config', match: ['/settings'] },
 ]
 
