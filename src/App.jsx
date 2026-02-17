@@ -17,6 +17,7 @@ import Hashtags from './pages/tiktok/Hashtags'
 import OKRList from './pages/okr/OKRList'
 import OKRDetail from './pages/okr/OKRDetail'
 import Wedding from './pages/wedding/Wedding'
+import Tasks from './pages/Tasks'
 import Settings from './pages/Settings'
 
 export const AppContext = createContext()
@@ -32,6 +33,10 @@ function App() {
   const [movementsLucre, setMovementsLucre] = useLocalStorage('pitiqq_movements_lucre', [])
   const [goalsLucre, setGoalsLucre] = useLocalStorage('pitiqq_goals_lucre', [])
   const [budgetsLucre, setBudgetsLucre] = useLocalStorage('pitiqq_budgets_lucre', [])
+
+  // Per-user tasks
+  const [tasksMateo, setTasksMateo] = useLocalStorage('pitiqq_tasks_mateo', [])
+  const [tasksLucre, setTasksLucre] = useLocalStorage('pitiqq_tasks_lucre', [])
 
   // Shared data
   const [ideas, setIdeas] = useLocalStorage('pitiqq_ideas', [])
@@ -51,12 +56,15 @@ function App() {
   const setGoals = isMateo ? setGoalsMateo : setGoalsLucre
   const budgets = isMateo ? budgetsMateo : budgetsLucre
   const setBudgets = isMateo ? setBudgetsMateo : setBudgetsLucre
+  const userTasks = isMateo ? tasksMateo : tasksLucre
+  const setUserTasks = isMateo ? setTasksMateo : setTasksLucre
 
   const ctx = {
     currentUser, setCurrentUser,
     movements, setMovements,
     goals, setGoals,
     budgets, setBudgets,
+    userTasks, setUserTasks,
     ideas, setIdeas,
     trends, setTrends,
     videoStats, setVideoStats,
@@ -86,6 +94,7 @@ function App() {
               <Route path="/movements" element={<Movements />} />
               <Route path="/goals" element={<SavingsGoals />} />
               <Route path="/budget" element={<Budget />} />
+              <Route path="/tasks" element={<Tasks />} />
               <Route path="/ideas" element={<IdeasBank />} />
               <Route path="/ideas/:id" element={<IdeaDetail />} />
               <Route path="/kanban" element={<Kanban />} />
