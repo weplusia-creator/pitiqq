@@ -95,10 +95,22 @@ export default function OKRDetail() {
           value={okr.title}
           onChange={e => update({ title: e.target.value })}
           className={`w-full text-lg font-bold bg-transparent outline-none ${darkMode ? 'text-white' : 'text-neutral-900'}`}
+          placeholder="Título del objetivo"
         />
-        {okr.period && (
-          <p className={`text-sm mt-1 ${darkMode ? 'text-neutral-400' : 'text-neutral-500'}`}>{okr.period}</p>
-        )}
+        <input
+          type="text"
+          value={okr.period || ''}
+          onChange={e => update({ period: e.target.value })}
+          className={`w-full text-sm mt-1 bg-transparent outline-none ${darkMode ? 'text-neutral-400' : 'text-neutral-500'}`}
+          placeholder="Período (ej: 1er Cuatrimestre 2026)"
+        />
+        <textarea
+          value={okr.description || ''}
+          onChange={e => update({ description: e.target.value })}
+          className={`w-full text-sm mt-1 bg-transparent outline-none resize-none ${darkMode ? 'text-neutral-300' : 'text-neutral-600'}`}
+          placeholder="Descripción..."
+          rows={2}
+        />
 
         <div className="mt-3">
           <div className="flex justify-between text-sm mb-1">
