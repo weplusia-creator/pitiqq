@@ -294,7 +294,16 @@ export default function Wedding() {
       )}
 
       {/* Task Modal */}
-      <Modal open={showTaskModal} onClose={() => setShowTaskModal(false)} title="Nueva tarea">
+      <Modal
+        open={showTaskModal}
+        onClose={() => setShowTaskModal(false)}
+        title="Nueva tarea"
+        action={
+          <button onClick={handleSaveTask} className="w-full py-3.5 bg-pink-brand text-white rounded-xl font-bold text-lg active:scale-95 transition-transform">
+            Agregar tarea
+          </button>
+        }
+      >
         <div className="space-y-4">
           <div>
             <label className={`text-sm ${darkMode ? 'text-neutral-400' : 'text-neutral-500'}`}>Tarea</label>
@@ -350,14 +359,20 @@ export default function Wedding() {
               className={`w-full mt-1 p-3 rounded-xl ${darkMode ? 'bg-neutral-800 text-white' : 'bg-neutral-100 text-neutral-900'}`}
             />
           </div>
-          <button onClick={handleSaveTask} className="w-full py-3.5 bg-pink-brand text-white rounded-xl font-bold text-lg active:scale-95 transition-transform">
-            Agregar tarea
-          </button>
         </div>
       </Modal>
 
       {/* Guest Modal */}
-      <Modal open={showGuestModal} onClose={() => setShowGuestModal(false)} title="Agregar invitado">
+      <Modal
+        open={showGuestModal}
+        onClose={() => setShowGuestModal(false)}
+        title="Agregar invitado"
+        action={
+          <button onClick={handleSaveGuest} className="w-full py-3.5 bg-pink-brand text-white rounded-xl font-bold text-lg active:scale-95 transition-transform">
+            Agregar invitado
+          </button>
+        }
+      >
         <div className="space-y-4">
           <div>
             <label className={`text-sm ${darkMode ? 'text-neutral-400' : 'text-neutral-500'}`}>Nombre</label>
@@ -408,9 +423,6 @@ export default function Wedding() {
               className={`w-full mt-1 p-3 rounded-xl ${darkMode ? 'bg-neutral-800 text-white' : 'bg-neutral-100 text-neutral-900'}`}
             />
           </div>
-          <button onClick={handleSaveGuest} className="w-full py-3.5 bg-pink-brand text-white rounded-xl font-bold text-lg active:scale-95 transition-transform">
-            Agregar invitado
-          </button>
         </div>
       </Modal>
     </div>

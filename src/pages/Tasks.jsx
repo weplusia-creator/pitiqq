@@ -217,7 +217,16 @@ export default function Tasks() {
       </button>
 
       {/* Create Modal */}
-      <Modal open={showModal} onClose={() => setShowModal(false)} title="Nueva tarea">
+      <Modal
+        open={showModal}
+        onClose={() => setShowModal(false)}
+        title="Nueva tarea"
+        action={
+          <button onClick={handleSave} className="w-full py-3.5 bg-pink-brand text-white rounded-xl font-bold text-lg active:scale-95 transition-transform">
+            Agregar tarea
+          </button>
+        }
+      >
         <div className="space-y-4">
           <div>
             <label className={`text-sm ${darkMode ? 'text-neutral-400' : 'text-neutral-500'}`}>Tarea</label>
@@ -284,9 +293,6 @@ export default function Tasks() {
               className={`w-full mt-1 p-3 rounded-xl ${darkMode ? 'bg-neutral-800 text-white' : 'bg-neutral-100 text-neutral-900'}`}
             />
           </div>
-          <button onClick={handleSave} className="w-full py-3.5 bg-pink-brand text-white rounded-xl font-bold text-lg active:scale-95 transition-transform">
-            Agregar tarea
-          </button>
         </div>
       </Modal>
     </div>

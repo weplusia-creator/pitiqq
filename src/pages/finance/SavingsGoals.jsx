@@ -129,7 +129,16 @@ export default function SavingsGoals() {
       )}
 
       {/* Create Modal */}
-      <Modal open={showModal} onClose={() => setShowModal(false)} title="Nueva meta">
+      <Modal
+        open={showModal}
+        onClose={() => setShowModal(false)}
+        title="Nueva meta"
+        action={
+          <button onClick={handleCreate} className="w-full py-3.5 bg-pink-brand text-white rounded-xl font-bold text-lg active:scale-95 transition-transform">
+            Crear meta
+          </button>
+        }
+      >
         <div className="space-y-4">
           <div>
             <label className={`text-sm ${darkMode ? 'text-neutral-400' : 'text-neutral-500'}`}>Nombre</label>
@@ -161,14 +170,23 @@ export default function SavingsGoals() {
               className={`w-full mt-1 p-3 rounded-xl ${darkMode ? 'bg-neutral-800 text-white' : 'bg-neutral-100 text-neutral-900'}`}
             />
           </div>
-          <button onClick={handleCreate} className="w-full py-3.5 bg-pink-brand text-white rounded-xl font-bold text-lg active:scale-95 transition-transform">
-            Crear meta
-          </button>
         </div>
       </Modal>
 
       {/* Contribution Modal */}
-      <Modal open={!!showContrib} onClose={() => setShowContrib(null)} title="Agregar aporte">
+      <Modal
+        open={!!showContrib}
+        onClose={() => setShowContrib(null)}
+        title="Agregar aporte"
+        action={
+          <button
+            onClick={() => handleContrib(showContrib)}
+            className="w-full py-3.5 bg-emerald-500 text-white rounded-xl font-bold text-lg active:scale-95 transition-transform"
+          >
+            Aportar
+          </button>
+        }
+      >
         <div className="space-y-4">
           <input
             type="number"
@@ -179,12 +197,6 @@ export default function SavingsGoals() {
             autoFocus
             className={`w-full p-3 rounded-xl text-xl font-bold text-center ${darkMode ? 'bg-neutral-800 text-white' : 'bg-neutral-100 text-neutral-900'}`}
           />
-          <button
-            onClick={() => handleContrib(showContrib)}
-            className="w-full py-3.5 bg-emerald-500 text-white rounded-xl font-bold text-lg active:scale-95 transition-transform"
-          >
-            Aportar
-          </button>
         </div>
       </Modal>
     </div>

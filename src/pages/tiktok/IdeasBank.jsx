@@ -157,7 +157,16 @@ export default function IdeasBank() {
       </button>
 
       {/* Create Modal */}
-      <Modal open={showModal} onClose={() => setShowModal(false)} title="Nueva idea">
+      <Modal
+        open={showModal}
+        onClose={() => setShowModal(false)}
+        title="Nueva idea"
+        action={
+          <button onClick={handleSave} className="w-full py-3.5 bg-pink-brand text-white rounded-xl font-bold text-lg active:scale-95 transition-transform">
+            Guardar idea
+          </button>
+        }
+      >
         <div className="space-y-4">
           <div>
             <label className={`text-sm ${darkMode ? 'text-neutral-400' : 'text-neutral-500'}`}>Título</label>
@@ -223,9 +232,6 @@ export default function IdeasBank() {
               className={`w-full mt-1 p-3 rounded-xl ${darkMode ? 'bg-neutral-800 text-white' : 'bg-neutral-100 text-neutral-900'}`}
             />
           </div>
-          <button onClick={handleSave} className="w-full py-3.5 bg-pink-brand text-white rounded-xl font-bold text-lg active:scale-95 transition-transform">
-            Guardar idea
-          </button>
         </div>
       </Modal>
     </div>

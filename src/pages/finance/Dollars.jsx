@@ -162,7 +162,16 @@ export default function Dollars() {
       </div>
 
       {/* Modal */}
-      <Modal open={showModal} onClose={() => setShowModal(false)} title="Nueva operación">
+      <Modal
+        open={showModal}
+        onClose={() => setShowModal(false)}
+        title="Nueva operación"
+        action={
+          <button onClick={handleSave} className="w-full py-3.5 bg-pink-brand text-white rounded-xl font-bold text-lg active:scale-95 transition-transform">
+            Registrar
+          </button>
+        }
+      >
         <div className="space-y-4">
           <div className="flex gap-2">
             {['compra', 'venta'].map(t => (
@@ -216,9 +225,6 @@ export default function Dollars() {
               className={`w-full mt-1 p-3 rounded-xl ${darkMode ? 'bg-neutral-800 text-white' : 'bg-neutral-100 text-neutral-900'}`}
             />
           </div>
-          <button onClick={handleSave} className="w-full py-3.5 bg-pink-brand text-white rounded-xl font-bold text-lg active:scale-95 transition-transform">
-            Registrar
-          </button>
         </div>
       </Modal>
     </div>

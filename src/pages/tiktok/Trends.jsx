@@ -115,7 +115,16 @@ export default function Trends() {
         </div>
       )}
 
-      <Modal open={showModal} onClose={() => setShowModal(false)} title="Guardar audio/trend">
+      <Modal
+        open={showModal}
+        onClose={() => setShowModal(false)}
+        title="Guardar audio/trend"
+        action={
+          <button onClick={handleSave} className="w-full py-3.5 bg-pink-brand text-white rounded-xl font-bold text-lg active:scale-95 transition-transform">
+            Guardar
+          </button>
+        }
+      >
         <div className="space-y-4">
           <div>
             <label className={`text-sm ${darkMode ? 'text-neutral-400' : 'text-neutral-500'}`}>Nombre</label>
@@ -147,9 +156,6 @@ export default function Trends() {
               className={`w-full mt-1 p-3 rounded-xl ${darkMode ? 'bg-neutral-800 text-white' : 'bg-neutral-100 text-neutral-900'}`}
             />
           </div>
-          <button onClick={handleSave} className="w-full py-3.5 bg-pink-brand text-white rounded-xl font-bold text-lg active:scale-95 transition-transform">
-            Guardar
-          </button>
         </div>
       </Modal>
     </div>

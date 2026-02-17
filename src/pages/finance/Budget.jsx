@@ -137,7 +137,16 @@ export default function Budget() {
         </div>
       )}
 
-      <Modal open={showModal} onClose={() => setShowModal(false)} title="Definir presupuesto">
+      <Modal
+        open={showModal}
+        onClose={() => setShowModal(false)}
+        title="Definir presupuesto"
+        action={
+          <button onClick={handleSave} className="w-full py-3.5 bg-pink-brand text-white rounded-xl font-bold text-lg active:scale-95 transition-transform">
+            Guardar
+          </button>
+        }
+      >
         <div className="space-y-4">
           <div>
             <label className={`text-sm ${darkMode ? 'text-neutral-400' : 'text-neutral-500'}`}>Categoría</label>
@@ -170,9 +179,6 @@ export default function Budget() {
               autoFocus
             />
           </div>
-          <button onClick={handleSave} className="w-full py-3.5 bg-pink-brand text-white rounded-xl font-bold text-lg active:scale-95 transition-transform">
-            Guardar
-          </button>
         </div>
       </Modal>
     </div>

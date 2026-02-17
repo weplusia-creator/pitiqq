@@ -113,7 +113,16 @@ export default function OKRList() {
         </div>
       )}
 
-      <Modal open={showModal} onClose={() => setShowModal(false)} title="Nuevo objetivo">
+      <Modal
+        open={showModal}
+        onClose={() => setShowModal(false)}
+        title="Nuevo objetivo"
+        action={
+          <button onClick={handleCreate} className="w-full py-3.5 bg-pink-brand text-white rounded-xl font-bold text-lg active:scale-95 transition-transform">
+            Crear objetivo
+          </button>
+        }
+      >
         <div className="space-y-4">
           <div>
             <label className={`text-sm ${darkMode ? 'text-neutral-400' : 'text-neutral-500'}`}>Objetivo</label>
@@ -163,9 +172,6 @@ export default function OKRList() {
               className={`w-full mt-1 p-3 rounded-xl resize-none ${darkMode ? 'bg-neutral-800 text-white' : 'bg-neutral-100 text-neutral-900'}`}
             />
           </div>
-          <button onClick={handleCreate} className="w-full py-3.5 bg-pink-brand text-white rounded-xl font-bold text-lg active:scale-95 transition-transform">
-            Crear objetivo
-          </button>
         </div>
       </Modal>
     </div>

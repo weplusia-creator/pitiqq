@@ -2,7 +2,7 @@ import { useContext } from 'react'
 import { X } from 'lucide-react'
 import { AppContext } from '../App'
 
-export default function Modal({ open, onClose, title, children }) {
+export default function Modal({ open, onClose, title, action, children }) {
   const { darkMode } = useContext(AppContext)
   if (!open) return null
 
@@ -16,18 +16,25 @@ export default function Modal({ open, onClose, title, children }) {
           }`}
           onClick={e => e.stopPropagation()}
         >
-          {/* Header */}
-          <div className={`flex items-center justify-between px-5 pt-5 pb-3 shrink-0`}>
+          {/* Header fijo */}
+          <div className="flex items-center justify-between px-5 pt-5 pb-3 shrink-0">
             <h2 className="text-lg font-bold">{title}</h2>
             <button onClick={onClose} className={`p-2 rounded-full ${darkMode ? 'hover:bg-neutral-800' : 'hover:bg-neutral-100'}`}>
               <X size={20} />
             </button>
           </div>
 
-          {/* Scrollable content with generous bottom padding */}
-          <div className="overflow-y-auto flex-1 px-5 pb-12" style={{ paddingBottom: 'calc(3rem + env(safe-area-inset-bottom, 0px))' }}>
+          {/* Contenido scrolleable */}
+          <div className="overflow-y-auto flex-1 px-5 pb-4">
             {children}
           </div>
+
+          {/* Botón fijo abajo, siempre visible */}
+          {action && (
+            <div className="shrink-0 px-5 pt-2 pb-5" style={{ paddingBottom: 'max(1.25rem, env(safe-area-inset-bottom, 1.25rem))' }}>
+              {action}
+            </div>
+          )}
         </div>
       </div>
     </div>

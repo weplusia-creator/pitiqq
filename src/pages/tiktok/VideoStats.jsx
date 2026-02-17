@@ -164,7 +164,16 @@ export default function VideoStats() {
         </div>
       )}
 
-      <Modal open={showModal} onClose={() => setShowModal(false)} title="Registrar video">
+      <Modal
+        open={showModal}
+        onClose={() => setShowModal(false)}
+        title="Registrar video"
+        action={
+          <button onClick={handleSave} className="w-full py-3.5 bg-pink-brand text-white rounded-xl font-bold text-lg active:scale-95 transition-transform">
+            Guardar
+          </button>
+        }
+      >
         <div className="space-y-3">
           <div>
             <label className={`text-sm ${darkMode ? 'text-neutral-400' : 'text-neutral-500'}`}>Título del video</label>
@@ -207,9 +216,6 @@ export default function VideoStats() {
               </div>
             ))}
           </div>
-          <button onClick={handleSave} className="w-full py-3.5 bg-pink-brand text-white rounded-xl font-bold text-lg active:scale-95 transition-transform">
-            Guardar
-          </button>
         </div>
       </Modal>
     </div>

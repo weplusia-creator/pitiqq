@@ -172,7 +172,19 @@ export default function Movements() {
       </div>
 
       {/* Modal */}
-      <Modal open={showModal} onClose={() => setShowModal(false)} title={editing ? 'Editar movimiento' : 'Nuevo movimiento'}>
+      <Modal
+        open={showModal}
+        onClose={() => setShowModal(false)}
+        title={editing ? 'Editar movimiento' : 'Nuevo movimiento'}
+        action={
+          <button
+            onClick={handleSave}
+            className="w-full py-3.5 bg-pink-brand text-white rounded-xl font-bold text-lg active:scale-95 transition-transform"
+          >
+            {editing ? 'Guardar cambios' : 'Agregar'}
+          </button>
+        }
+      >
         <div className="space-y-4">
           {/* Type toggle */}
           <div className="flex gap-2">
@@ -256,13 +268,6 @@ export default function Movements() {
               className={`w-full mt-1 p-3 rounded-xl ${darkMode ? 'bg-neutral-800 text-white' : 'bg-neutral-100 text-neutral-900'}`}
             />
           </div>
-
-          <button
-            onClick={handleSave}
-            className="w-full py-3.5 bg-pink-brand text-white rounded-xl font-bold text-lg active:scale-95 transition-transform"
-          >
-            {editing ? 'Guardar cambios' : 'Agregar'}
-          </button>
         </div>
       </Modal>
     </div>

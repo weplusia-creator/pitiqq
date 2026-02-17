@@ -228,7 +228,16 @@ export default function OKRDetail() {
       )}
 
       {/* KR Modal */}
-      <Modal open={showModal} onClose={() => setShowModal(false)} title={editingKR ? 'Editar Key Result' : 'Nuevo Key Result'}>
+      <Modal
+        open={showModal}
+        onClose={() => setShowModal(false)}
+        title={editingKR ? 'Editar Key Result' : 'Nuevo Key Result'}
+        action={
+          <button onClick={handleSaveKR} className="w-full py-3.5 bg-pink-brand text-white rounded-xl font-bold text-lg active:scale-95 transition-transform">
+            {editingKR ? 'Guardar cambios' : 'Agregar KR'}
+          </button>
+        }
+      >
         <div className="space-y-4">
           <div>
             <label className={`text-sm ${darkMode ? 'text-neutral-400' : 'text-neutral-500'}`}>Descripción</label>
@@ -275,9 +284,6 @@ export default function OKRDetail() {
               className={`${inputClass} mt-1`}
             />
           </div>
-          <button onClick={handleSaveKR} className="w-full py-3.5 bg-pink-brand text-white rounded-xl font-bold text-lg active:scale-95 transition-transform">
-            {editingKR ? 'Guardar cambios' : 'Agregar KR'}
-          </button>
         </div>
       </Modal>
     </div>
